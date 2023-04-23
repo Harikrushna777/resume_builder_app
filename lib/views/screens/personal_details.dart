@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_builder_app/views/components/myBackButton.dart';
 
 import '../../utils/routes_utils.dart';
 import '../../utils/theme_utils.dart';
@@ -16,12 +17,13 @@ class _personal_detailsState extends State<personal_details> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Personal Details",
+          MyRoutes.buildOption[2].name,
           style: appBarTextStyle,
         ),
-        leading: Icon(Icons.arrow_back_ios),
+        leading: const MyBackButton(),
         backgroundColor: Colors.purple,
         centerTitle: true,
+        toolbarHeight: 150,
       ),
     );
   }

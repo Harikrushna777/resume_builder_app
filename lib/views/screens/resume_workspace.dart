@@ -12,13 +12,14 @@ class resume_workspace extends StatefulWidget {
 class _resume_workspaceState extends State<resume_workspace> {
   @override
   Widget build(BuildContext context) {
+
     Size S = MediaQuery
         .of(context)
         .size;
 
     return Scaffold(
       appBar: AppBar(
-         leading: MyBackButton(),
+         leading: const MyBackButton(),
         title: const Text(
           "Resume Workspace",
           style: TextStyle(
@@ -87,7 +88,7 @@ class _resume_workspaceState extends State<resume_workspace> {
                                 color: Colors.white,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             IconButton(
                               onPressed: () {
                                 Navigator.of(context).pushNamed(e.routes);
@@ -97,8 +98,7 @@ class _resume_workspaceState extends State<resume_workspace> {
                           ],
                         ),
                       ),
-                )
-                    .toList(),
+                ).toList(),
               ),
             ),
           ),
