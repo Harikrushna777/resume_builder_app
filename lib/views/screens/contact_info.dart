@@ -151,7 +151,7 @@ class _contact_infoState extends State<contact_info> {
                                     initialValue: Global.name,
                                     cursorColor:Colors.white,
                                     style: TextStyle(
-                                      color: Colors.white,vf
+                                      color: Colors.white,
                                     ),
                                     validator: (val) {
                                       if (val!.isEmpty) {
