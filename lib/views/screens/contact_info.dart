@@ -21,8 +21,7 @@ class _contact_infoState extends State<contact_info> {
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  TextEditingController nameController =
-      TextEditingController(text: Global.name);
+  TextEditingController nameController = TextEditingController(text: Global.name);
 
   AutovalidateMode mode = AutovalidateMode.disabled;
 
@@ -148,8 +147,9 @@ class _contact_infoState extends State<contact_info> {
                                 Expanded(
                                   flex: 8,
                                   child: TextFormField(
+
                                     initialValue: Global.name,
-                                    cursorColor:Colors.white,
+                                    cursorColor: Colors.white,
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -164,22 +164,26 @@ class _contact_infoState extends State<contact_info> {
                                       Global.name = val;
                                     },
                                     textInputAction: TextInputAction.next,
-
                                     decoration: InputDecoration(
                                       hintText: "Enter The Name",
                                       hintStyle: const TextStyle(
                                         color: Colors.white,
                                       ),
                                       labelText: "Name",
-                                      labelStyle:
-                                          const TextStyle(color: Colors.white),
-                                      border: UnderlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                      labelStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                    ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      ),
                                   ),
                                 ),
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 20),
                               ],
                             ),
                             const SizedBox(height: 20),
@@ -216,14 +220,13 @@ class _contact_infoState extends State<contact_info> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: const Text("Selet The Metod ?"),
+                                title: const Text("Selete The Method ?"),
                                 actions: [
                                   TextButton.icon(
                                     onPressed: () async {
                                       Navigator.of(context).pop();
 
-                                      XFile? img = await picker.pickImage(
-                                          source: ImageSource.camera);
+                                      XFile? img = await picker.pickImage(source: ImageSource.camera);
 
                                       if (img != null) {
                                         setState(() {
@@ -237,8 +240,7 @@ class _contact_infoState extends State<contact_info> {
                                   const SizedBox(width: 50),
                                   TextButton.icon(
                                     onPressed: () async {
-                                      XFile? img = await picker.pickImage(
-                                          source: ImageSource.gallery);
+                                      XFile? img = await picker.pickImage(source: ImageSource.gallery);
 
                                       if (img != null) {
                                         setState(() {
