@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:resume_builder_app/utils/image_utils.dart';
 import 'package:resume_builder_app/utils/routes_utils.dart';
 import 'package:resume_builder_app/utils/theme_utils.dart';
 import 'package:resume_builder_app/views/components/myBackButton.dart';
 
 import '../../models/global.dart';
+import '../components/my_SnackBar.dart';
 
 class contact_info extends StatefulWidget {
   const contact_info({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class _contact_infoState extends State<contact_info> {
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  TextEditingController nameController = TextEditingController(text: Global.name);
+  TextEditingController nameController =
+      TextEditingController(text: Global.name);
 
   AutovalidateMode mode = AutovalidateMode.disabled;
 
@@ -135,6 +137,7 @@ class _contact_infoState extends State<contact_info> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const SizedBox(height: 20),
+                            // Name
                             Row(
                               children: [
                                 const SizedBox(width: 10),
@@ -151,7 +154,7 @@ class _contact_infoState extends State<contact_info> {
                                   child: TextFormField(
                                     initialValue: Global.name,
                                     cursorColor: Colors.white,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                     ),
                                     validator: (val) {
@@ -180,7 +183,7 @@ class _contact_infoState extends State<contact_info> {
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                         ),
                                       ),
@@ -191,6 +194,7 @@ class _contact_infoState extends State<contact_info> {
                               ],
                             ),
                             const SizedBox(height: 20),
+                            //E-mail
                             Row(
                               children: [
                                 const SizedBox(width: 10),
@@ -207,7 +211,7 @@ class _contact_infoState extends State<contact_info> {
                                   child: TextFormField(
                                     initialValue: Global.name,
                                     cursorColor: Colors.white,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                     ),
                                     validator: (val) {
@@ -218,9 +222,10 @@ class _contact_infoState extends State<contact_info> {
                                       }
                                     },
                                     onSaved: (val) {
-                                      Global.name = val;
+                                      Global.email = val;
                                     },
                                     textInputAction: TextInputAction.next,
+                                    keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                       hintText: "Enter Your E-mail",
                                       hintStyle: const TextStyle(
@@ -236,7 +241,7 @@ class _contact_infoState extends State<contact_info> {
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                         ),
                                       ),
@@ -247,6 +252,7 @@ class _contact_infoState extends State<contact_info> {
                               ],
                             ),
                             const SizedBox(height: 20),
+                            //Mobail Number
                             Row(
                               children: [
                                 const SizedBox(width: 10),
@@ -261,20 +267,29 @@ class _contact_infoState extends State<contact_info> {
                                 Expanded(
                                   flex: 8,
                                   child: TextFormField(
-                                    initialValue: Global.name,
+                                    maxLength: 10,
+                                    initialValue: (Global.contact == null)
+                                        ? null
+                                        : Global.contact.toString(),
                                     cursorColor: Colors.white,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                     ),
+                                    keyboardType: TextInputType.phone,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                     validator: (val) {
                                       if (val!.isEmpty) {
                                         return "Please Enter Your Mobail No";
+                                      } else if (val.length < 10) {
+                                        return "Contact Number must have 10 digits...";
                                       } else {
                                         return null;
                                       }
                                     },
                                     onSaved: (val) {
-                                      Global.name = val;
+                                      Global.contact = int.parse(val!);
                                     },
                                     textInputAction: TextInputAction.next,
                                     decoration: InputDecoration(
@@ -282,6 +297,7 @@ class _contact_infoState extends State<contact_info> {
                                       hintStyle: const TextStyle(
                                         color: Colors.white,
                                       ),
+                                      prefixText: "+91 ",
                                       labelText: "Mobail Number",
                                       labelStyle: const TextStyle(
                                         color: Colors.white,
@@ -292,7 +308,7 @@ class _contact_infoState extends State<contact_info> {
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                         ),
                                       ),
@@ -303,6 +319,7 @@ class _contact_infoState extends State<contact_info> {
                               ],
                             ),
                             const SizedBox(height: 20),
+                            //Address
                             Row(
                               children: [
                                 const SizedBox(width: 10),
@@ -319,9 +336,9 @@ class _contact_infoState extends State<contact_info> {
                                   child: TextFormField(
                                     maxLines: 3,
                                     textAlign: TextAlign.start,
-                                    initialValue: Global.name,
+                                    initialValue: Global.address,
                                     cursorColor: Colors.white,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                     ),
                                     validator: (val) {
@@ -332,7 +349,7 @@ class _contact_infoState extends State<contact_info> {
                                       }
                                     },
                                     onSaved: (val) {
-                                      Global.name = val;
+                                      Global.address = val;
                                     },
                                     textInputAction: TextInputAction.next,
                                     decoration: InputDecoration(
@@ -350,7 +367,7 @@ class _contact_infoState extends State<contact_info> {
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.white,
                                         ),
                                       ),
@@ -360,21 +377,59 @@ class _contact_infoState extends State<contact_info> {
                                 const SizedBox(width: 20),
                               ],
                             ),
-                            const SizedBox(height: 100),
+                            const SizedBox(height: 150),
+                            // Buttons
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                // ElevatedButton(
-                                //   onPressed: () {},
-                                //   child: Text(
-                                //     "Save",
-                                //     style: TextStyle(
-                                //       color: Colors.white,
-                                //       fontWeight: FontWeight.bold,
-                                //       fontSize: 22,
-                                //     ),
-                                //   ),
-                                // ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      if (formKey.currentState!.validate()) {
+                                        formKey.currentState!.save();
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          mySnackBar(
+                                            text: "Successfully validated !!",
+                                            color: Colors.green,
+                                          ),
+                                        );
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          mySnackBar(
+                                            text: "Failled to validated !!",
+                                            color: Colors.redAccent,
+                                          ),
+                                        );
+                                      }
+                                    });
+                                  },
+                                  child: const Text(
+                                    "Save",
+                                    style: TextStyle(
+                                      color: Colors.purple,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                    ),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    formKey.currentState!.reset();
+                                    nameController.clear();
+                                    Global.name = Global.email =
+                                        Global.contact = Global.address = null;
+                                  },
+                                  child: const Text(
+                                    "Reset",
+                                    style: TextStyle(
+                                      color: Colors.purple,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                             const SizedBox(height: 40),
@@ -396,7 +451,7 @@ class _contact_infoState extends State<contact_info> {
                       alignment: Alignment.bottomRight,
                       children: [
                         const CircleAvatar(
-                          radius: 100,
+                          radius: 80,
                           child: Text(
                             "Add",
                             style: TextStyle(
@@ -417,7 +472,8 @@ class _contact_infoState extends State<contact_info> {
                                     onPressed: () async {
                                       Navigator.of(context).pop();
 
-                                      XFile? img = await picker.pickImage(source: ImageSource.camera);
+                                      XFile? img = await picker.pickImage(
+                                          source: ImageSource.camera);
 
                                       if (img != null) {
                                         setState(() {
@@ -431,7 +487,8 @@ class _contact_infoState extends State<contact_info> {
                                   const SizedBox(width: 50),
                                   TextButton.icon(
                                     onPressed: () async {
-                                      XFile? img = await picker.pickImage(source: ImageSource.gallery);
+                                      XFile? img = await picker.pickImage(
+                                          source: ImageSource.gallery);
 
                                       if (img != null) {
                                         setState(() {
