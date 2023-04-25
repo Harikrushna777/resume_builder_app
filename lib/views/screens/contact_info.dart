@@ -33,7 +33,7 @@ class _contact_infoState extends State<contact_info> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    double iconSize = size.height * 0.04;
+    double iconSize = size.height * 0.05;
 
     return Scaffold(
       appBar: AppBar(
@@ -121,6 +121,8 @@ class _contact_infoState extends State<contact_info> {
                 children: [
                   // Contact
                   Container(
+                    height: double.infinity,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.purple,
                       borderRadius: BorderRadius.circular(15),
@@ -137,9 +139,9 @@ class _contact_infoState extends State<contact_info> {
                               children: [
                                 const SizedBox(width: 10),
                                 Expanded(
-                                  child: Image.asset(
-                                    imagePath + "user.png",
-                                    height: iconSize,
+                                  child: Icon(
+                                    Icons.account_circle_sharp,
+                                    size: iconSize,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -147,7 +149,6 @@ class _contact_infoState extends State<contact_info> {
                                 Expanded(
                                   flex: 8,
                                   child: TextFormField(
-
                                     initialValue: Global.name,
                                     cursorColor: Colors.white,
                                     style: TextStyle(
@@ -166,6 +167,9 @@ class _contact_infoState extends State<contact_info> {
                                     textInputAction: TextInputAction.next,
                                     decoration: InputDecoration(
                                       hintText: "Enter The Name",
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
                                       hintStyle: const TextStyle(
                                         color: Colors.white,
                                       ),
@@ -180,13 +184,200 @@ class _contact_infoState extends State<contact_info> {
                                           color: Colors.white,
                                         ),
                                       ),
-                                      ),
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 20),
                               ],
                             ),
                             const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Icon(
+                                    Icons.mail,
+                                    size: iconSize,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  flex: 8,
+                                  child: TextFormField(
+                                    initialValue: Global.name,
+                                    cursorColor: Colors.white,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    validator: (val) {
+                                      if (val!.isEmpty) {
+                                        return "Please Enter Your E-mail";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onSaved: (val) {
+                                      Global.name = val;
+                                    },
+                                    textInputAction: TextInputAction.next,
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Your E-mail",
+                                      hintStyle: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                      labelText: "E-mail",
+                                      labelStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Icon(
+                                    Icons.phone_android,
+                                    size: iconSize,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  flex: 8,
+                                  child: TextFormField(
+                                    initialValue: Global.name,
+                                    cursorColor: Colors.white,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    validator: (val) {
+                                      if (val!.isEmpty) {
+                                        return "Please Enter Your Mobail No";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onSaved: (val) {
+                                      Global.name = val;
+                                    },
+                                    textInputAction: TextInputAction.next,
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Your Mobail No",
+                                      hintStyle: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                      labelText: "Mobail Number",
+                                      labelStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Icon(
+                                    Icons.location_pin,
+                                    size: iconSize,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  flex: 8,
+                                  child: TextFormField(
+                                    maxLines: 3,
+                                    textAlign: TextAlign.start,
+                                    initialValue: Global.name,
+                                    cursorColor: Colors.white,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    validator: (val) {
+                                      if (val!.isEmpty) {
+                                        return "Please Enter Your Address";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onSaved: (val) {
+                                      Global.name = val;
+                                    },
+                                    textInputAction: TextInputAction.next,
+                                    decoration: InputDecoration(
+                                      hintText: "Enter Your Address",
+                                      hintStyle: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                      labelText: "Address",
+                                      labelStyle: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                              ],
+                            ),
+                            const SizedBox(height: 100),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                // ElevatedButton(
+                                //   onPressed: () {},
+                                //   child: Text(
+                                //     "Save",
+                                //     style: TextStyle(
+                                //       color: Colors.white,
+                                //       fontWeight: FontWeight.bold,
+                                //       fontSize: 22,
+                                //     ),
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                            const SizedBox(height: 40),
                           ],
                         ),
                       ),
