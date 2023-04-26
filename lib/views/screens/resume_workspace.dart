@@ -28,6 +28,7 @@ class _resume_workspaceState extends State<resume_workspace> {
             color: Colors.white,
           ),
         ),
+        elevation: 0,
         backgroundColor: Colors.purple,
         centerTitle: true,
       ),
