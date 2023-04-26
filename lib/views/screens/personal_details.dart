@@ -12,11 +12,12 @@ class personal_details extends StatefulWidget {
 }
 
 class _personal_detailsState extends State<personal_details> {
-  String? maritalStatus;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     double iconSize = size.height * 0.05;
+
+    String? maritalStatus;
 
     return Scaffold(
       appBar: AppBar(
@@ -116,7 +117,6 @@ class _personal_detailsState extends State<personal_details> {
                     color: Colors.white,
                   ),
                 ),
-                activeColor: Colors.white,
                 groupValue: maritalStatus,
                 onChanged: (val) {
                   setState(() {
@@ -130,11 +130,10 @@ class _personal_detailsState extends State<personal_details> {
                   "Married",
                   style: TextStyle(
                     color: maritalStatus == "Married"
-                        ? Colors.white
+                        ? Colors.purpleAccent
                         : Colors.white,
                   ),
                 ),
-                activeColor: Colors.white,
                 tileColor: Colors.white,
                 groupValue: maritalStatus,
                 onChanged: (val) {
