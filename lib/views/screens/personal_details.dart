@@ -100,7 +100,7 @@ class _personal_detailsState extends State<personal_details> {
                 ],
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 "Marital Status",
                 style: TextStyle(
                   color: Colors.white,

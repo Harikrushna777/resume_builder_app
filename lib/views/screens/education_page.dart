@@ -27,9 +27,9 @@ class _education_pageState extends State<education_page> {
         toolbarHeight: 150,
       ),
       body: Padding(
-        padding: EdgeInsets.all(18),
+        padding: const EdgeInsets.all(18),
         child: Container(
-          padding: EdgeInsets.all(18),
+          padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: Colors.purple),
           child: SingleChildScrollView(
@@ -76,7 +76,7 @@ class _education_pageState extends State<education_page> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                    initialValue: Global.college,
                   cursorColor: Colors.white,
@@ -116,7 +116,7 @@ class _education_pageState extends State<education_page> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   initialValue: Global.percentage,
                   cursorColor: Colors.white,
@@ -156,17 +156,21 @@ class _education_pageState extends State<education_page> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
-                  initialValue: Global.passOutYear.toString(),
+                  initialValue: (Global.passOutYear == null) ? null : Global.passOutYear.toString(),
                   cursorColor: Colors.white,
                   style: const TextStyle(
                     color: Colors.white,
                   ),
                   validator: (val) {
                     if (val!.isEmpty) {
-                      return "Please Enter The Year Of Pass";
-                    } else {
+                      return "Please enter Pass Out Year...";
+                    }
+                    else if (val!.length < 4) {
+                      return "Enter Only 4 Digits";
+                    }
+                    else {
                       return null;
                     }
                   },
