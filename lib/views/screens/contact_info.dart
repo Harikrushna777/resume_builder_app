@@ -252,7 +252,7 @@ class _contact_infoState extends State<contact_info> {
                               ],
                             ),
                             const SizedBox(height: 20),
-                            //Mobail Number
+                            // Mobail Number
                             Row(
                               children: [
                                 const SizedBox(width: 10),

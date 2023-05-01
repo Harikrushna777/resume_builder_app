@@ -192,7 +192,7 @@ class _personal_detailsState extends State<personal_details> {
                         if (val) {
                           Global.allLanguages.add("Hindi");
                         } else {
-                           // Global.allLanguages.removeWhere((e) => e =>"Hindi");
+                           Global.allLanguages.removeWhere((e) => e =>"Hindi");
                         }
                       });
                     }),
@@ -211,7 +211,7 @@ class _personal_detailsState extends State<personal_details> {
                         if (val) {
                           Global.allLanguages.add("English");
                         } else {
-                           // Global.allLanguages.removeWhere((e) => e =>"English");
+                           Global.allLanguages.removeWhere((e) => e =>"English");
                         }
                       });
                     }),
