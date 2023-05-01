@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
        routes: {
         MyRoutes.home : (context) => const home_page(),
+         // MyRoutes.pdfPage : (context)=> const pdf_page(),
          MyRoutes.workspace : (context) => const resume_workspace(),
          MyRoutes.buildOption[0].routes:(context)=>const contact_info(),
          MyRoutes.buildOption[1].routes:(context)=>const carrier_objective(),
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
          MyRoutes.buildOption[8].routes:(context)=>const achievements_page(),
          MyRoutes.buildOption[9].routes:(context)=>const references_page(),
          MyRoutes.buildOption[10].routes:(context)=>const declaration_page(),
+
        },
     );
   }
