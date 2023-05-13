@@ -20,8 +20,6 @@ class _PdfPageState extends State<PdfPage> {
   pw.Document pdf = pw.Document();
 
   generatePdf() async {
-    // var image = await networkImage("https://i.pinimg.com/474x/8d/2e/03/8d2e0351c530f93217c09846ea5a82a3.jpg");
-
     pdf.addPage(
       pw.Page(
         margin: pw.EdgeInsets.zero,
@@ -30,92 +28,159 @@ class _PdfPageState extends State<PdfPage> {
           width: double.infinity,
           alignment: pw.Alignment.center,
           decoration: const pw.BoxDecoration(
-            color: PdfColors.blue50,
-            // image: pw.DecorationImage(
-            //   image: image,
-            // ),
+            color: PdfColors.white,
           ),
-          child: pw.Column(
-            mainAxisSize: pw.MainAxisSize.min,
+          child: pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.start,
             children: [
               pw.Container(
-                height: 250,
-                width: 250,
+                padding: pw.EdgeInsets.all(10),
+                width: 200,
+                alignment: pw.Alignment.center,
                 decoration: pw.BoxDecoration(
-                  shape: pw.BoxShape.circle,
-                  image: pw.DecorationImage(
-                    image: pw.MemoryImage(
-                      File(Global.image!.path).readAsBytesSync(),
-                    ),
-                  ),
+                  color: PdfColors.purple,
+                  borderRadius: pw.BorderRadius.only(
+                      topRight: pw.Radius.circular(30),
+                      bottomRight: pw.Radius.circular(30)),
                 ),
-              ),
-              pw.SizedBox(
-                height: 20,
-              ),
-              pw.SizedBox(
-                width: 350,
                 child: pw.Column(
-                  mainAxisSize: pw.MainAxisSize.min,
+                  mainAxisAlignment: pw.MainAxisAlignment.center,
                   children: [
-                    pw.Row(
-                      mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                      children: [
-                        pw.Text(
-                          "Name :",
-                          style: const pw.TextStyle(
-                            fontSize: 28,
-                            color: PdfColors.red,
-                          ),
-                        ),
-                        pw.Text(
-                          Global.name!,
-                          style: const pw.TextStyle(
-                            fontSize: 28,
-                            color: PdfColors.red,
-                          ),
-                        ),
-                      ],
+                    pw.SizedBox(
+                      height: 20,
                     ),
-                    pw.Row(
-                      mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                      children: [
-                        pw.Text(
-                          "Contact :",
-                          style: const pw.TextStyle(
-                            fontSize: 28,
-                            color: PdfColors.blue,
+                    pw.Container(
+                      height: 150,
+                      width: 150,
+                      decoration: pw.BoxDecoration(
+                        shape: pw.BoxShape.circle,
+                        image: pw.DecorationImage(
+                          image: pw.MemoryImage(
+                            File(Global.image!.path).readAsBytesSync(),
                           ),
-                        ),
-                        pw.Text(
-                          "+91 ${Global.contact!.toString()}",
-                          style: const pw.TextStyle(
-                            fontSize: 28,
-                            color: PdfColors.blue,
-                          ),
-                        ),
-                      ],
-                    ),
-                    ...Global.mySkills
-                        .map(
-                          (e) => pw.Text(
-                        "Skill: $e",
-                        style: const pw.TextStyle(
-                          fontSize: 26,
                         ),
                       ),
-                    )
-                        .toList(),
-                    ...Global.allLanguages
-                        .map(
-                          (e) => pw.Text(
-                        "Language: $e",
-                        style: const pw.TextStyle(
-                          fontSize: 26,
-                        ),
+                    ),
+                    pw.SizedBox(
+                      height: 20,
+                    ),
+                    pw.Text(
+                      "Contact",
+                      style: pw.TextStyle(
+                        color: PdfColors.white,
+                        fontSize: 20,
+                        fontWeight: pw.FontWeight.bold,
                       ),
-                    )
-                        .toList(),
+                    ),
+                    pw.Divider(
+                      color: PdfColors.white,
+                      thickness: 2,
+                    ),
+                    pw.SizedBox(
+                      height: 10,
+                    ),
+                    pw.SizedBox(
+                      child: pw.Column(
+                        children: [
+                          pw.Row(
+                            mainAxisAlignment:
+                                pw.MainAxisAlignment.spaceBetween,
+                            children: [
+                              pw.Text(
+                                "Name :",
+                                style: pw.TextStyle(
+                                  fontWeight: pw.FontWeight.bold,
+                                  fontSize: 14,
+                                  color: PdfColors.white,
+                                ),
+                              ),
+                              pw.Text(
+                                Global.name!,
+                                style: pw.TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: pw.FontWeight.bold,
+                                  color: PdfColors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          pw.Row(
+                            mainAxisAlignment:
+                                pw.MainAxisAlignment.spaceBetween,
+                            children: [
+                              pw.Text(
+                                "Contact :",
+                                style: pw.TextStyle(
+                                  fontSize: 14,
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold,
+                                ),
+                              ),
+                              pw.Text(
+                                "+91 ${Global.contact!.toString()}",
+                                style: pw.TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: pw.FontWeight.bold,
+                                  color: PdfColors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          ...Global.mySkills
+                              .map(
+                                (e) => pw.Text(
+                                  "Skill: $e",
+                                  style: pw.TextStyle(
+                                    fontSize: 26,
+                                    color: PdfColors.white,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          ...Global.allLanguages
+                              .map(
+                                (e) => pw.Text(
+                                  "Language: $e",
+                                  style: pw.TextStyle(
+                                    fontSize: 14,
+                                    color: PdfColors.white,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ],
+                      ),
+                    ),
+                    pw.SizedBox(
+                      height: 10,
+                    ),
+                    pw.Text(
+                      "Education",
+                      style: pw.TextStyle(
+                        color: PdfColors.white,
+                        fontSize: 20,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                    pw.Divider(
+                      color: PdfColors.white,
+                      thickness: 2,
+                    ),
+                    pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Text(
+                          "Year : ${Global.passOutYear}",
+                          style: pw.TextStyle(
+                            color: PdfColors.white,
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -150,4 +215,3 @@ class _PdfPageState extends State<PdfPage> {
     );
   }
 }
-

@@ -15,9 +15,7 @@ class personal_details extends StatefulWidget {
 class _personal_detailsState extends State<personal_details> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     double iconSize = size.height * 0.05;
 
     return Scaffold(
@@ -60,7 +58,7 @@ class _personal_detailsState extends State<personal_details> {
                     Expanded(
                       flex: 8,
                       child: TextFormField(
-                        // initialValue: Global.name,
+                        initialValue: Global.dateOfBirth,
                         cursorColor: Colors.white,
                         style: const TextStyle(
                           color: Colors.white,
@@ -73,7 +71,7 @@ class _personal_detailsState extends State<personal_details> {
                           }
                         },
                         onSaved: (val) {
-                          // Global.name = val;
+                          Global.dateOfBirth = val;
                         },
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.datetime,
@@ -163,17 +161,21 @@ class _personal_detailsState extends State<personal_details> {
                     activeColor: Colors.white,
                     checkColor: Colors.purple,
                     controlAffinity: ListTileControlAffinity.leading,
-                    title: const Text("Gujarati", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),),
+                    title: const Text(
+                      "Gujarati",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                     onChanged: (val) {
                       setState(() {
                         Global.isGujarati = val!;
                         if (val) {
                           Global.allLanguages.add("Gujarati");
                         } else {
-                            Global.allLanguages.removeWhere((e) => e =>"Gujarati");
+                          Global.allLanguages
+                              .removeWhere((e) => e == "Gujarati");
                         }
                       });
                     }),
@@ -182,17 +184,20 @@ class _personal_detailsState extends State<personal_details> {
                     activeColor: Colors.white,
                     checkColor: Colors.purple,
                     controlAffinity: ListTileControlAffinity.leading,
-                    title: const Text("Hindi", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),),
+                    title: const Text(
+                      "Hindi",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                     onChanged: (val) {
                       setState(() {
                         Global.isHindi = val!;
                         if (val) {
                           Global.allLanguages.add("Hindi");
                         } else {
-                           Global.allLanguages.removeWhere((e) => e =>"Hindi");
+                          Global.allLanguages.removeWhere((e) => e == "Hindi");
                         }
                       });
                     }),
@@ -201,21 +206,25 @@ class _personal_detailsState extends State<personal_details> {
                     activeColor: Colors.white,
                     checkColor: Colors.purple,
                     controlAffinity: ListTileControlAffinity.leading,
-                    title: const Text("English", style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),),
+                    title: const Text(
+                      "English",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                     onChanged: (val) {
                       setState(() {
                         Global.isEnglish = val!;
                         if (val) {
                           Global.allLanguages.add("English");
                         } else {
-                           Global.allLanguages.removeWhere((e) => e =>"English");
+                          Global.allLanguages
+                              .removeWhere((e) => e == "English");
                         }
                       });
                     }),
-                const SizedBox(height: 20),
+                // const SizedBox(height: 20),
                 //Nationality
                 TextFormField(
                   initialValue: Global.nationality,

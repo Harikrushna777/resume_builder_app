@@ -7,7 +7,6 @@ import 'package:resume_builder_app/views/screens/declaration_page.dart';
 import 'package:resume_builder_app/views/screens/education_page.dart';
 import 'package:resume_builder_app/views/screens/experiences_page.dart';
 import 'package:resume_builder_app/views/screens/home_page.dart';
-import 'package:resume_builder_app/views/screens/interest_page.dart';
 import 'package:resume_builder_app/views/screens/pdf_page.dart';
 import 'package:resume_builder_app/views/screens/personal_details.dart';
 import 'package:resume_builder_app/views/screens/projects_page.dart';
@@ -39,11 +38,10 @@ class MyApp extends StatelessWidget {
         MyRoutes.buildOption[3].routes: (context) => const education_page(),
         MyRoutes.buildOption[4].routes: (context) => const experiences_page(),
         MyRoutes.buildOption[5].routes: (context) => const technical_skill(),
-        MyRoutes.buildOption[6].routes: (context) => const interest_page(),
-        MyRoutes.buildOption[7].routes: (context) => const projects_page(),
-        MyRoutes.buildOption[8].routes: (context) => const achievements_page(),
-        MyRoutes.buildOption[9].routes: (context) => const references_page(),
-        MyRoutes.buildOption[10].routes: (context) => const declaration_page(),
+        MyRoutes.buildOption[6].routes: (context) => const projects_page(),
+        MyRoutes.buildOption[7].routes: (context) => const achievements_page(),
+        MyRoutes.buildOption[8].routes: (context) => const references_page(),
+        MyRoutes.buildOption[9].routes: (context) => const declaration_page(),
       },
     );
   }

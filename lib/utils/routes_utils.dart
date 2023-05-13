@@ -44,14 +44,9 @@ class MyRoutes {
       routes: "experiences_page",
     ),
     BuildOption(
-      icon: imagePath + "thinking.png",
+      icon: imagePath + "open-book.png",
       name: "Technical Skill",
       routes: "technical_skill",
-    ),
-    BuildOption(
-      icon: imagePath + "open-book.png",
-      name: "Interest/Hobbies",
-      routes: "interest_page",
     ),
     BuildOption(
       icon: imagePath + "project.png",

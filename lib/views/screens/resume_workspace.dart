@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder_app/utils/routes_utils.dart';
 import 'package:resume_builder_app/views/components/myBackButton.dart';
+import 'package:resume_builder_app/views/screens/pdf_page.dart';
 
 class resume_workspace extends StatefulWidget {
   const resume_workspace({Key? key}) : super(key: key);
@@ -12,14 +13,11 @@ class resume_workspace extends StatefulWidget {
 class _resume_workspaceState extends State<resume_workspace> {
   @override
   Widget build(BuildContext context) {
-
-    Size S = MediaQuery
-        .of(context)
-        .size;
+    Size S = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-         leading: const MyBackButton(),
+        leading: const MyBackButton(),
         title: const Text(
           "Resume Workspace",
           style: TextStyle(
@@ -28,6 +26,18 @@ class _resume_workspaceState extends State<resume_workspace> {
             color: Colors.white,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(MyRoutes.pdfPage);
+            },
+            icon: Icon(
+              Icons.picture_as_pdf_rounded,
+              color: Colors.white,
+              size: 26,
+            ),
+          ),
+        ],
         elevation: 0,
         backgroundColor: Colors.purple,
         centerTitle: true,
@@ -49,10 +59,10 @@ class _resume_workspaceState extends State<resume_workspace> {
                 ),
               ),
               decoration: const BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(30),
-                  ),
+                color: Colors.purple,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(30),
+                ),
               ),
             ),
           ),
@@ -62,13 +72,12 @@ class _resume_workspaceState extends State<resume_workspace> {
               child: Column(
                 children: MyRoutes.buildOption
                     .map(
-                      (e) =>
-                      Container(
+                      (e) => Container(
                         height: 100,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Colors.purple,
-                            borderRadius: BorderRadius.circular(10),
+                          color: Colors.purple,
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(10),
@@ -94,12 +103,16 @@ class _resume_workspaceState extends State<resume_workspace> {
                               onPressed: () {
                                 Navigator.of(context).pushNamed(e.routes);
                               },
-                              icon: const Icon(Icons.arrow_forward_ios,color: Colors.white,),
+                              icon: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                              ),
                             ),
                           ],
                         ),
                       ),
-                ).toList(),
+                    )
+                    .toList(),
               ),
             ),
           ),

@@ -12,7 +12,6 @@ class technical_skill extends StatefulWidget {
   State<technical_skill> createState() => _technical_skillState();
 }
 
-
 class _technical_skillState extends State<technical_skill> {
   @override
   void dispose() {
@@ -20,17 +19,20 @@ class _technical_skillState extends State<technical_skill> {
 
     Global.mySkillsControllers.removeWhere((element) {
       if (element.text == "") {
-        print("REMOVED: ${Global.mySkillsControllers.indexOf(element)}\t\tVALUE: ${element.text}");
+        print(
+            "REMOVED: ${Global.mySkillsControllers.indexOf(element)}\t\tVALUE: ${element.text}");
         return true;
       } else {
-        print("SKIPPED: ${Global.mySkillsControllers.indexOf(element)}\t\tVALUE: ${element.text}");
+        print(
+            "SKIPPED: ${Global.mySkillsControllers.indexOf(element)}\t\tVALUE: ${element.text}");
         return false;
       }
     });
 
     Global.mySkillsControllers.forEach((element) {
       Global.mySkills.add("");
-      Global.mySkills[Global.mySkillsControllers.indexOf(element)] = element.text;
+      Global.mySkills[Global.mySkillsControllers.indexOf(element)] =
+          element.text;
     });
 
     Global.mySkills.removeWhere((element) => element == "");
@@ -75,48 +77,55 @@ class _technical_skillState extends State<technical_skill> {
             color: Colors.purple,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Enter your skills",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              ...List.generate(
-                Global.mySkillsControllers.length,
-                    (index) => MySkillTile(index: index),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          Global.mySkillsControllers.add(TextEditingController());
-                        });
-                      },
-                      child: const Icon(Icons.add,color: Colors.purple,),
-                    ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Enter your skills",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                    color: Colors.white,
                   ),
-                ],
-              ),
-            ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                ...List.generate(
+                  Global.mySkillsControllers.length,
+                  (index) => MySkillTile(index: index),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            Global.mySkillsControllers
+                                .add(TextEditingController());
+                          });
+                        },
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.purple,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
   Widget MySkillTile({required int index}) {
     return Row(
       children: [
@@ -146,6 +155,3 @@ class _technical_skillState extends State<technical_skill> {
     );
   }
 }
-
-
-

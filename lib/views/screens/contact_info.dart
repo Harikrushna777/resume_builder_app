@@ -450,9 +450,12 @@ class _contact_infoState extends State<contact_info> {
                     child: Stack(
                       alignment: Alignment.bottomRight,
                       children: [
-                        const CircleAvatar(
+                        CircleAvatar(
                           radius: 80,
-                          child: Text(
+                          foregroundImage: Global.image != null
+                              ? FileImage(Global.image!)
+                              : null,
+                          child: const Text(
                             "Add",
                             style: TextStyle(
                               fontSize: 30,
